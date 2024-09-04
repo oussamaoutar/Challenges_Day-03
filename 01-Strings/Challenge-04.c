@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char ch1[1000], ch2[1000];
+    printf("Saisir la 1ère chaine : ");
+    scanf("%[^\n]s", &ch1);
+    printf("Saisir la 2ème chaine : ");
+    scanf(" %[^\n]s", &ch2);
+    if(strcmp(ch1, ch2) == 0) printf("Chaines identiques");
+    else printf("Chaines non identiques");
+
+    return 0;
+}
