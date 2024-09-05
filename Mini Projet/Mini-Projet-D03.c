@@ -73,6 +73,12 @@ void supprimerContact() {
 
 void afficherContacts() {
     if(!NbrContacts) printf("Il n'y a aucun contact."); 
+    else {
+        printf("Nom | Numéro de Téléphone | E-mail\n");
+        for(int i=0; i<NbrContacts; i++) {
+            printf("%s | %s | %s\n", contacts[i].nom, contacts[i].numTel, contacts[i].numTel);
+        }
+    }
 }
 
 int main() {
