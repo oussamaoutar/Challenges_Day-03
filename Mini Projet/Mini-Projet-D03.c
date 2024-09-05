@@ -32,6 +32,7 @@ void ajouterContact() {
     scanf(" %[^\n]s", &c.email);
     contacts[NbrContacts] = c;
     NbrContacts++;
+    printf("Contact ajouté(e) avec succès !\n");
 }
 
 void modifierContact() {
@@ -70,6 +71,10 @@ void supprimerContact() {
     }
 }
 
+void afficherContacts() {
+    if(!NbrContacts) printf("Il n'y a aucun contact."); 
+}
+
 int main() {
     int choix;
     do {
@@ -80,7 +85,7 @@ int main() {
         printf("4. Afficher Tous les Contacts\n");
         printf("5. Rechercher un Contacts\n");
         printf("Tapper un Autre Chiffre pour Quitter.\n");
-        printf("====> ");
+        printf("===> ");
         scanf("%d", &choix);
             
         switch(choix) {
