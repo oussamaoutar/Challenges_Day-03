@@ -7,6 +7,7 @@ typedef struct {
     char* email;
 } Contact;
 
+Contact contacts[];
 
 int main() {
     int choix;
