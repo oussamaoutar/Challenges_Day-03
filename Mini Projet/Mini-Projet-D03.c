@@ -9,8 +9,18 @@ typedef struct {
     char* email;
 } Contact;
 
-Contact contacts[];
+Contact contacts[1000];
 int NbrContacts = 0;
+
+bool contactExists(char nom[50]) {
+    for(int i=0; i<NbrContacts; i++) {
+        if(!strcmp(nom, contacts[i].nom)) {
+            return i;
+            break;
+        }
+    }
+    return false;
+}
 
 void ajouterContact() {
     Contact c;
@@ -26,18 +36,10 @@ void ajouterContact() {
 
 void modifierContact() {
     char nomContact[50];
-    bool existe = false;
-    int indiceContactTrouve;
     printf("Saisir le nom du contact ===> ");
     scanf(" %[^\n]s", &nomContact);
-    for(int i=0; i<NbrContacts; i++) {
-        if(!strcmp(nomContact, contacts[i].nom)) {
-            existe = true;
-            indiceContactTrouve = i;
-            break;
-        }
-    }
-    if(existe) {
+    int indiceContactTrouve = contactExists(nomContact);
+    if(indiceContactTrouve) {
         char nvNumTel[20];
         char nvEmail[100];
         printf("Saisir le nouveau numéro de téléphone ===> ");
@@ -47,6 +49,22 @@ void modifierContact() {
         contacts[indiceContactTrouve].numTel = nvNumTel;
         contacts[indiceContactTrouve].email = nvEmail;
         printf("Contact Modifiée avec Succès !\n");
+    } else {
+        printf("Contact non trouvé(e) !\n");
+    }
+}
+
+void supprimerContact() {
+    char nomContact[50];
+    printf("Saisir le nom du contact ===> ");
+    scanf(" %[^\n]s", &nomContact);
+    int indiceContactTrouve = contactExists(nomContact);
+    if(indiceContactTrouve) {
+        for(int i=indiceContactTrouve; i<NbrContacts-1; i++) {
+            contacts[i] = contacts[i+1];
+        }
+        NbrContacts--;
+        printf("Contact Supprimé(e) avec Succès !\n");
     } else {
         printf("Contact non trouvé(e) !\n");
     }
@@ -74,7 +92,6 @@ int main() {
             default: exit;
         }
     } while(choix > 0 && choix <= 5);
-
 
     return 0;
 }
