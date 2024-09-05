@@ -12,6 +12,12 @@ typedef struct {
 Contact contacts[1000];
 int NbrContacts = 0;
 
+void ajouterContact();
+void modifierContact();
+void supprimerContact();
+void afficherContacts();
+void rechercherContact();
+
 int contactExists(char nom[50]) {
     for(int i=0; i<NbrContacts; i++) {
         if(!strcmp(nom, contacts[i].nom)) {
