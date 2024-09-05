@@ -76,14 +76,21 @@ void afficherContacts() {
     else {
         printf("Nom | Numéro de Téléphone | E-mail\n");
         for(int i=0; i<NbrContacts; i++) {
-            printf("%s | %s | %s\n", contacts[i].nom, contacts[i].numTel, contacts[i].numTel);
+            printf("%s | %s | %s\n", contacts[i].nom, contacts[i].numTel, contacts[i].email);
         }
     }
 }
 
 void rechercherContact() {
     char nomContact[50];
-
+    printf("Saisir le nom du contact ===> ");
+    scanf(" %[^\n]s", &nomContact);
+    int indiceContactTrouve = contactExists(nomContact);
+    if(indiceContactTrouve != -1) {
+        printf("Nom: %s\nNuméro de Téléphone: %s\nE-mail: %s\n", contacts[indiceContactTrouve].nom, contacts[indiceContactTrouve].numTel, contacts[indiceContactTrouve].email);
+    } else {
+        printf("Contact non trouvé(e) !\n");
+    }
 }
 
 int main() {
