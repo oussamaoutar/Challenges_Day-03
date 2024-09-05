@@ -4,9 +4,9 @@
 #include <string.h>
 
 typedef struct {
-    char* nom;
-    char* numTel;
-    char* email;
+    char nom[25];
+    char numTel[25];
+    char email[100];
 } Contact;
 
 Contact contacts[1000];
@@ -22,7 +22,6 @@ int contactExists(char nom[50]) {
     for(int i=0; i<NbrContacts; i++) {
         if(!strcmp(nom, contacts[i].nom)) {
             return i;
-            break;
         }
     }
     return -1;
@@ -50,11 +49,9 @@ void modifierContact() {
         char nvNumTel[20];
         char nvEmail[100];
         printf("Saisir le nouveau numéro de téléphone ===> ");
-        scanf(" %[^\n]s", &nvNumTel);
+        scanf(" %[^\n]s", &contacts[indiceContactTrouve].numTel);
         printf("Saisir le nouvel e-mail ===> ");
-        scanf(" %[^\n]s", &nvEmail);
-        contacts[indiceContactTrouve].numTel = nvNumTel;
-        contacts[indiceContactTrouve].email = nvEmail;
+        scanf(" %[^\n]s", &contacts[indiceContactTrouve].email);
         printf("Contact Modifiée avec Succès !\n");
     } else {
         printf("Contact non trouvé(e) !\n");
