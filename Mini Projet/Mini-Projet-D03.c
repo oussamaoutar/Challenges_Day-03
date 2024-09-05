@@ -12,14 +12,14 @@ typedef struct {
 Contact contacts[1000];
 int NbrContacts = 0;
 
-bool contactExists(char nom[50]) {
+int contactExists(char nom[50]) {
     for(int i=0; i<NbrContacts; i++) {
         if(!strcmp(nom, contacts[i].nom)) {
             return i;
             break;
         }
     }
-    return false;
+    return -1;
 }
 
 void ajouterContact() {
@@ -79,6 +79,11 @@ void afficherContacts() {
             printf("%s | %s | %s\n", contacts[i].nom, contacts[i].numTel, contacts[i].numTel);
         }
     }
+}
+
+void rechercherContact() {
+    char nomContact[50];
+
 }
 
 int main() {
