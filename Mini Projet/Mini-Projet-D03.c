@@ -60,7 +60,7 @@ void supprimerContact() {
     printf("Saisir le nom du contact ===> ");
     scanf(" %[^\n]s", &nomContact);
     int indiceContactTrouve = contactExists(nomContact);
-    if(indiceContactTrouve) {
+    if(indiceContactTrouve != -1) {
         for(int i=indiceContactTrouve; i<NbrContacts-1; i++) {
             contacts[i] = contacts[i+1];
         }
