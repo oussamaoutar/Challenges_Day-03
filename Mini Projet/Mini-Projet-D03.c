@@ -40,7 +40,7 @@ void modifierContact() {
     printf("Saisir le nom du contact ===> ");
     scanf(" %[^\n]s", &nomContact);
     int indiceContactTrouve = contactExists(nomContact);
-    if(indiceContactTrouve) {
+    if(indiceContactTrouve != -1) {
         char nvNumTel[20];
         char nvEmail[100];
         printf("Saisir le nouveau numéro de téléphone ===> ");
