@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
 
 typedef struct {
     char* nom;
@@ -20,6 +22,34 @@ void ajouterContact() {
     scanf(" %[^\n]s", &c.email);
     contacts[NbrContacts] = c;
     NbrContacts++;
+}
+
+void modifierContact() {
+    char nomContact[50];
+    bool existe = false;
+    int indiceContactTrouve;
+    printf("Saisir le nom du contact ===> ");
+    scanf(" %[^\n]s", &nomContact);
+    for(int i=0; i<NbrContacts; i++) {
+        if(!strcmp(nomContact, contacts[i].nom)) {
+            existe = true;
+            indiceContactTrouve = i;
+            break;
+        }
+    }
+    if(existe) {
+        char nvNumTel[20];
+        char nvEmail[100];
+        printf("Saisir le nouveau numéro de téléphone ===> ");
+        scanf(" %[^\n]s", &nvNumTel);
+        printf("Saisir le nouvel e-mail ===> ");
+        scanf(" %[^\n]s", &nvEmail);
+        contacts[indiceContactTrouve].numTel = nvNumTel;
+        contacts[indiceContactTrouve].email = nvEmail;
+        printf("Contact Modifiée avec Succès !\n");
+    } else {
+        printf("Contact non trouvé(e) !\n");
+    }
 }
 
 int main() {
