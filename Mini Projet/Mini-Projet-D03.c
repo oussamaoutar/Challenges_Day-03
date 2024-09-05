@@ -8,6 +8,19 @@ typedef struct {
 } Contact;
 
 Contact contacts[];
+int NbrContacts = 0;
+
+void ajouterContact() {
+    Contact c;
+    printf("Nom ===> ");
+    scanf(" %[^\n]s", &c.nom);
+    printf("Numéro de Téléphone ===> ");
+    scanf(" %[^\n]s", &c.numTel);
+    printf("E-mail ===> ");
+    scanf(" %[^\n]s", &c.email);
+    contacts[NbrContacts] = c;
+    NbrContacts++;
+}
 
 int main() {
     int choix;
